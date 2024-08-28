@@ -7,7 +7,7 @@ on:
             - prod
 jobs:
     test-lint:
-        uses: ./.github/workflows.test-and-lint.yml
+        uses: ./.github/workflows/test-and-lint.yml
         name: Test and Lint
         secrets:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
