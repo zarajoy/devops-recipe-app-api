@@ -9,3 +9,11 @@ variable "project" {
 variable "contact" {
   default = "zarajoy@outlook.com"
 }
+
+variable "db_username" {
+  default = "recipeapp"
+}
+
+variable "db_password" {
+  description = "Password for database"
+}
