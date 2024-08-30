@@ -40,7 +40,8 @@ resource "aws_lb_target_group" "api" {
 
   health_check {
     path = "/api/health-check/"
-
+  }
+}
 resource "aws_lb_listener" "api" {
   load_balancer_arn = aws_lb.api.arn
   port              = 80
@@ -51,5 +52,4 @@ resource "aws_lb_listener" "api" {
     target_group_arn = aws_lb_target_group.api.arn
   }
 }
-  }
-}
+
