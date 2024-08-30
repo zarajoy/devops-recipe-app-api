@@ -28,7 +28,7 @@ resource "aws_iam_role" "app_task" {
 resource "aws_iam_policy" "task_ssm_policy" {
   name        = "${local.prefix}-task-ssm-role-policy"
   path        = "/"
-  description = "Policy tyo allow ssm to execute in container"
+  description = "Policy to allow System Manager to execute in container"
   policy      = file("./templates/ecs/task-ssm-policy.json")
 }
 
