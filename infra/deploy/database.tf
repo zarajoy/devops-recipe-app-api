@@ -17,9 +17,10 @@ resource "aws_security_group" "rds" {
     Name = "${local.prefix}-db-security-group"
   }
   ingress {
-    protocol  = "tcp"
-    from_port = "5432"
-    to_port   = "5432"
+    protocol        = "tcp"
+    from_port       = "5432"
+    to_port         = "5432"
+    security_groups = [aws_security_group.ecs_service.id]
   }
 }
 resource "aws_db_instance" "main" {
