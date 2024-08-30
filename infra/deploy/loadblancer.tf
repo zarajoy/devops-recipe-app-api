@@ -4,7 +4,7 @@
 
 resource "aws_security_group" "lb" {
   description = "condigure access for the alb"
-  name        = "${prefix.local}-alb-access"
+  name        = "${local.prefix}-alb-access"
   vpc_id      = aws_vpc.main.id
   ingress {
     protocol    = "tcp"
