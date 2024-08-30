@@ -53,12 +53,18 @@ resource "aws_ecs_task_definition" "api" {
   memory                   = 512
   execution_role_arn       = aws_iam_role.task_execution_role.arn
   task_role_arn            = aws_iam_role.app_task.arn
-  container_definitions    = jsonencode([])
+
+  container_definitions = jsonencode([])
+
   volume {
     name = "static"
   }
+
   runtime_platform {
     operating_system_family = "LINUX"
+    cpu_architecture        = "X86_64"
+  }
+}
     cpu_architecture        = "X86_64"
   }
 }
