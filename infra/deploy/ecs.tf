@@ -28,7 +28,7 @@ resource "aws_iam_role" "app_task" {
 resource "aws_iam_policy" "task_ssm_policy" {
   name        = "${local.prefix}-task-ssm-role-policy"
   path        = "/"
-  description = "Policy to allow System Manager to execute in container"
+  description = "Policy tyo allow ssm to execute in container"
   policy      = file("./templates/ecs/task-ssm-policy.json")
 }
 
@@ -168,7 +168,7 @@ resource "aws_security_group" "ecs_service" {
     from_port   = 8000
     to_port     = 8000
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = [aws_security_group.lb.id]
   }
 }
 
