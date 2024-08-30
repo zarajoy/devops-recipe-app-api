@@ -65,6 +65,3 @@ resource "aws_ecs_task_definition" "api" {
     cpu_architecture        = "X86_64"
   }
 }
-    cpu_architecture        = "X86_64"
-  }
-}
