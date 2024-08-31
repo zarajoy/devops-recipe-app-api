@@ -149,7 +149,7 @@ resource "aws_ecs_task_definition" "api" {
   }
 }
 resource "aws_security_group" "ecs_service" {
-  description = "access rules for ecs service - endpoints, rds, http inbound"
+  description = "access rules for ecs service - endpoints, rds, http inbound, NFS"
   name        = "${local.prefix}-ecs-service"
   vpc_id      = aws_vpc.main.id
   egress {
@@ -161,6 +161,12 @@ resource "aws_security_group" "ecs_service" {
   egress {
     from_port   = 5432
     to_port     = 5432
+    protocol    = "tcp"
+    cidr_blocks = [aws_subnet.private_a.cidr_block, aws_subnet.private_b.cidr_block]
+  }
+  egress {
+    from_port   = 2049
+    to_port     = 2049
     protocol    = "tcp"
     cidr_blocks = [aws_subnet.private_a.cidr_block, aws_subnet.private_b.cidr_block]
   }
